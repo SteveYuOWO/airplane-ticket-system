@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments :: head(~{::title})"><title>404</title></head>
+<body>
+    <!--navigation-->
+    <nav th:replace="_fragments :: menu" class="ui inverted segment m-padded-tiny right"></nav>
+
+    <!-- 中间部分 -->
+    <div  class="m-container m-padded-tb-big animated fadeIn">
+        <div class="ui container">
+            <div class="m-container-small m-padded-tb-massive">
+                <div class="ui error message m-padded-tb-huge" >
+                    <div class="ui contianer">
+                    <h2>404</h2>
+                    <p>对不起，你访问的资源不存在</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

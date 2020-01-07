@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/stevecss.css" class="rel">
+    <title>首页</title>
+</head>
+<body>
+    <!--navigation-->
+    <nav class="ui inverted segment m-padded-tiny right">
+        <div class="ui container">
+            <div class="ui inverted menu stackable">
+                <h2 class="ui teal header item">民航订票管理系统</h2>
+                <a href="#" class="m-item item m-mobile-hide">首页</a>
+                <a href="#" class="m-item item m-mobile-hide">查询购票</a>
+                <a href="#" class="m-item item m-mobile-hide">我的票务</a>
+                <a href="#" class="m-item item m-mobile-hide">会员中心</a>
+                <div class="ui inverted segment m-margin-auto m-mobile-hide m-item">
+                  <a href="#" class="ui inverted basic button big m-padded-middle-button">
+                    登陆
+                  </a>
+                  <a href="#" class="ui inverted basic button big m-padded-middle-button">
+                    注册
+                  </a>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="ui black icon button m-right-top m-mobile-show" id="menu-tongle">
+            <i class="sidebar teal icon button big"></i>
+        </a>
+    </nav> 
+
+    <!-- 中间部分 -->
+    <div  class="m-container m-padded-tb-big animated fadeIn">
+        <div class="ui container">
+          <div class="ui stackable grid">
+            <!--左边个人中心修改-->
+            <div class="column">
+              <div class="ui segment disco">
+                <div class="ui segment  grid attached m-margin-auto">
+                  <form class="ui form m-padded-tb-big m-margin-auto m-margin-top-middle">
+                    <h2 class="ui teal header item">资料修改</h2>
+                    <div class="field">
+                      <label>姓名</label>
+                      <div class="field">
+                        <input type="text" name="username" placeholder="Name">
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label>详细地址</label>
+                      <div class="fields">
+                        <div class="field">
+                          <input type="text" name="address" placeholder="Address">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="two fields">
+                      <div class="field">
+                        <label>省</label>
+                        <div class="field">
+                          <input type="text" class="" placeholder="">
+                        </div>
+                      </div>
+                      <div class="field">
+                        <label>Country</label>
+                        <div class="ui fluid search selection dropdown">
+                          <input type="hidden" name="country">
+                          <i class="dropdown icon"></i>
+                          <div class="default text">市</div>
+                          <div class="menu">
+                      <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
+                      
+                    </div>
+                         </div>
+                      </div>
+                    </div>
+                    <h4 class="ui dividing header">Billing Information</h4>
+                    <div class="field">
+                      <label>Card Type</label>
+                      <div class="ui selection dropdown">
+                        <input type="hidden" name="card[type]">
+                        <div class="default text">Type</div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                          <div class="item" data-value="visa">
+                            <i class="visa icon"></i>
+                            Visa
+                          </div>
+                          <div class="item" data-value="amex">
+                            <i class="amex icon"></i>
+                            American Express
+                          </div>
+                          <div class="item" data-value="discover">
+                            <i class="discover icon"></i>
+                            Discover
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="fields">
+                      <div class="seven wide field">
+                        <label>Card Number</label>
+                        <input type="text" name="card[number]" maxlength="16" placeholder="Card #">
+                      </div>
+                      <div class="three wide field">
+                        <label>CVC</label>
+                        <input type="text" name="card[cvc]" maxlength="3" placeholder="CVC">
+                      </div>
+                      <div class="six wide field">
+                        <label>Expiration</label>
+                        <div class="two fields">
+                          <div class="field">
+                            <select class="ui fluid search dropdown" name="card[expire-month]">
+                              <option value="">Month</option>
+                              <option value="1">January</option>
+                              <option value="2">February</option>
+                              <option value="3">March</option>
+                              <option value="4">April</option>
+                              <option value="5">May</option>
+                              <option value="6">June</option>
+                              <option value="7">July</option>
+                              <option value="8">August</option>
+                              <option value="9">September</option>
+                              <option value="10">October</option>
+                              <option value="11">November</option>
+                              <option value="12">December</option>
+                            </select>
+                          </div>
+                          <div class="field">
+                            <input type="text" name="card[expire-year]" maxlength="4" placeholder="Year">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                     <h4 class="ui dividing header">Receipt</h4>
+                     <div class="field">
+                      <label>Send Receipt To:</label>
+                      <div class="ui fluid multiple search selection dropdown">
+                        <input type="hidden" name="receipt">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Saved Contacts</div>
+                        <div class="menu">
+                          <div class="item" data-value="jenny" data-text="Jenny">
+                            <img class="ui mini avatar image" src="/images/avatar/small/jenny.jpg">
+                            Jenny Hess
+                          </div>
+                          <div class="item" data-value="elliot" data-text="Elliot">
+                            <img class="ui mini avatar image" src="/images/avatar/small/elliot.jpg">
+                            Elliot Fu
+                          </div>
+                          <div class="item" data-value="stevie" data-text="Stevie">
+                            <img class="ui mini avatar image" src="/images/avatar/small/stevie.jpg">
+                            Stevie Feliciano
+                          </div>
+                          <div class="item" data-value="christian" data-text="Christian">
+                            <img class="ui mini avatar image" src="/images/avatar/small/christian.jpg">
+                            Christian
+                          </div>
+                          <div class="item" data-value="matt" data-text="Matt">
+                            <img class="ui mini avatar image" src="/images/avatar/small/matt.jpg">
+                            Matt
+                          </div>
+                          <div class="item" data-value="justen" data-text="Justen">
+                            <img class="ui mini avatar image" src="/images/avatar/small/justen.jpg">
+                            Justen Kitsune
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                     <div class="ui segment">
+                      <div class="field">
+                        <div class="ui toggle checkbox">
+                          <input type="checkbox" name="gift" tabindex="0" class="hidden">
+                          <label>Do not include a receipt in the package</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ui button" tabindex="0">Submit Order</div>
+                  </form>
+
+
+                 
+                </div>
+                
+              </div>
+            </div>    
+          </div>
+        </div>
+    
+    </div>
+    
+      <br>
+      <br>
+      <!--底部footer-->
+      <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+        <div class="ui center aligned container">
+          <div class="ui inverted divided stackable grid">
+            <div class="three wide column">
+              <div class="ui inverted link list">
+                <div class="item">
+                  <img src="../static/img/QRcode.png" th:src="@{/images/wechat.jpg}"  class="ui rounded image" alt="" style="width: 110px">
+                </div>
+              </div>
+            </div>
+            <div class="three wide column">
+              <h4 class="ui inverted header m-text-thin m-text-spaced " >工作机会</h4>
+              <div class="ui inverted link list">
+                <a href="#" class="item m-text-thin">软件工程师</a>
+                <a href="#" class="item m-text-thin">大数据开发工程师</a>
+                <a href="#" class="item m-text-thin">前端工程师</a>
+                <a href="#" class="item m-text-thin">票务员</a>
+                <a href="#" class="item m-text-thin">空姐</a>
+              </div>
+            </div>
+            <div class="three wide column">
+              <h4 class="ui inverted header m-text-thin m-text-spaced ">联系我</h4>
+              <div class="ui inverted link list">
+                <a href="#" class="item m-text-thin">Email：littlepageprogram@163.com</a>
+                <a href="#" class="item m-text-thin">QQ:743024332</a>
+              </div>
+            </div>
+            <div class="seven wide column">
+              <h4 class="ui inverted header m-text-thin m-text-spaced ">加入我们</h4>
+              <p class="m-text-thin m-text-spaced m-opacity-mini">
+                欢迎加入本航班，投递简历至littlepageprogram@163.com，即可获得工作机会
+              </p>
+            </div>
+          </div>
+          <div class="ui inverted section divider"></div>
+          <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2020 SteveYu</p>
+        </div>
+    
+      </footer>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</body>
+</html>

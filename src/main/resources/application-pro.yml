@@ -1,0 +1,17 @@
+spring:
+    datasource:
+        driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+        url: jdbc:sqlserver://localhost:1433;DatabaseName=airplane-ticket-system
+        username: sa
+        password: Root123..
+    jpa:
+        hibernate:
+            ddl-auto: none
+        show-sql: true
+        
+logging:
+    level:
+        root: info
+        com.littlepage: debug
+    file:
+        name: log/system-run-dev.log

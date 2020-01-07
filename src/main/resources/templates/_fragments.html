@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <title th:replace="${title}">Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet"
+          href="../../static/css/stevecss.css"
+          class="rel"
+          th:href="@{/css/stevecss.css}">
+    <script>
+        /**
+         * mobile tongle click method
+         * */
+        $('#menu-tongle').click(function(){
+            $('.m-item').toggleClass('m-mobile-hide')
+        })
+    </script>
+</head>
+<body>
+    <!--navigation-->
+    <nav th:fragment="menu" class="ui inverted segment m-padded-tiny right">
+        <div class="ui container">
+            <div class="ui inverted menu stackable">
+                <h2 class="ui teal header item">民航订票管理系统</h2>
+                <a href="#" th:href="@{/}" class="m-item item m-mobile-hide">首页</a>
+                <a href="#" class="m-item item m-mobile-hide">我的票务</a>
+                <a href="#" class="m-item item m-mobile-hide">个人中心</a>
+                <div th:if="${session.user} == null" class="ui inverted segment m-margin-auto m-mobile-hide m-item">
+                    <a href="#" th:href="@{/admin/login}" class="ui inverted basic button big m-padded-middle-button">
+                        登陆
+                    </a>
+                    <a href="#" th:href="@{/admin/register}" class="ui inverted basic button big m-padded-middle-button">
+                        注册
+                    </a>
+                </div>
+                <div th:if="${session.user} != null" class="ui inverted segment m-margin-auto m-mobile-hide m-item">
+                    <h2 class="div ui header m-inline-block">steveyu</h2>
+                    <h4 class="div ui header m-inline-block m-text-thin">&nbsp;&nbsp;已登陆</h4>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="/admin/logout" class="ui inverted basic button big m-padded-middle-button">
+                        注销
+                    </a>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="ui black icon button m-right-top m-mobile-show" id="menu-tongle">
+            <i class="sidebar teal icon button big"></i>
+        </a>
+    </nav>
+
+
+    <!--底部footer-->
+    <footer th:fragment="footer" class="ui inverted vertical segment m-padded-tb-massive">
+        <div class="ui center aligned container">
+            <div class="ui inverted divided stackable grid">
+                <div class="three wide column">
+                    <div class="ui inverted link list">
+                        <div class="item">
+                            <img src="../../static/img/QRcode.png" th:src="@{/img/QRcode.png}"   class="ui rounded image" alt="" style="width: 110px">
+                        </div>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced " >工作机会</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item m-text-thin">软件工程师</a>
+                        <a href="#" class="item m-text-thin">大数据开发工程师</a>
+                        <a href="#" class="item m-text-thin">前端工程师</a>
+                        <a href="#" class="item m-text-thin">票务员</a>
+                        <a href="#" class="item m-text-thin">空姐</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced ">联系我</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item m-text-thin">Email：littlepageprogram@163.com</a>
+                        <a href="#" class="item m-text-thin">QQ:743024332</a>
+                    </div>
+                </div>
+                <div class="seven wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced ">加入我们</h4>
+                    <p class="m-text-thin m-text-spaced m-opacity-mini">
+                        欢迎加入本航班，投递简历至littlepageprogram@163.com，即可获得工作机会
+                    </p>
+                </div>
+            </div>
+            <div class="ui inverted section divider"></div>
+            <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2020 SteveYu</p>
+        </div>
+    </footer>
+
+    <script th:block th:fragment="tongle-script">
+        /**
+         * mobile tongle click method
+         * */
+        $('#menu-tongle').click(function(){
+            $('.m-item').toggleClass('m-mobile-hide')
+        })
+    </script>
+</body>
+</html>

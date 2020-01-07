@@ -1,0 +1,19 @@
+package com.littlepage.airplaneticketsystem.pojo;
+
+import lombok.*;
+import java.util.Date;
+
+/**
+ * Entity Airflight
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Airflight {
+    private String afId;
+    private Date startTime;
+    private Date arriveTime;
+    private Double touristPrice;
+    private Double firstPrice;
+    private Double businessPrice;
+}

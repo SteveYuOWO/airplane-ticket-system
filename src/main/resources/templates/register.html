@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments :: head(~{::title})"><title>首页</title></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/stevecss.css" class="rel">
+    <title>首页</title>
+</head>
+<body>
+    <!--navigation-->
+    <nav th:replace="_fragments :: menu" class="ui inverted segment m-padded-tiny right"></nav>
+
+    <!-- 中间部分 -->
+    <div  class="m-container m-padded-tb-big animated fadeIn">
+        <div class="ui container">
+          <div class="ui stackable grid">
+            <!--左边注册列表-->
+            <div class="eleven wide column" id="left-login">
+              <div class="column">
+                <h2 class="ui teal image header">
+                  <div class="content">
+                    注册
+                  </div>
+                </h2>
+                <form class="ui large form" method="post" action="#" th:action="@{/admin/register/valiRegister}">
+                  <div class="ui  segment">
+                    <div class="field">
+                      <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        <input type="text" name="username" placeholder="用户名">
+                      </div>
+                    </div>
+                    <div class="field">
+                      <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="password" name="password" placeholder="请输入密码">
+                      </div>
+                    </div>
+                    <div class="field">
+                      <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="password" name="passwordRepeat" placeholder="再次输入密码">
+                      </div>
+                    </div>
+                    <button class="ui fluid large teal submit button">注   册</button>
+                  </div>
+
+                    <div class="ui error mini message"></div>
+                    <div class="ui mini negative message" th:unless="${#strings.isEmpty(registerMessage)}" th:text="${registerMessage}">用户名和密码错误</div>
+
+                </form>
+       
+              </div>
+            </div>
+    
+            <!--右边的top-->
+            <div class="five wide column">
+              <!-- 查询航班 -->
+              <div class="ui segments">
+                <div class="ui secondary segment">
+                  <div class="ui two column grid">
+                    <div class="column">
+                      <i class="idea icon"></i>查询航班
+                    </div>
+                  </div>
+                </div>
+                <div class="ui teal segment attach">
+                    <div class="ui icon input fluid m-padded-top-bottom-small">
+                      <input type="text" placeholder="出发城市">
+                    </div>
+                    <div class="ui icon input fluid m-padded-top-bottom-small">
+                      <input type="text" placeholder="到达城市">
+                    </div>
+                    <div class="ui input fluid m-padded-top-bottom-small">
+                      <button class="ui button icon fluid padded">
+                        查询
+                        <i class="search icon"></i>
+                      </button>
+                    </div>
+                </div>
+              </div>
+              <br>
+              <br>
+              <!--查询城市-->
+              <div class="ui segments">
+                <div class="ui secondary segment">
+                  <div class="ui two column grid">
+                    <div class="column">
+                      <i class="idea icon"></i>查询城市
+                    </div>
+                  </div>
+                </div>
+                <div class="ui teal segment attach">
+                    <div class="ui icon input fluid m-padded-top-bottom-small">
+                      <input type="text" placeholder="请输入查询的城市">
+                    </div>
+
+                    <div class="ui input fluid m-padded-top-bottom-small">
+                      <button class="ui button icon fluid padded">
+                        查询
+                        <i class="search icon"></i>
+                      </button>
+                    </div>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+        </div>
+    
+    </div>
+    
+      <br>
+      <br>
+      <!--底部footer-->
+      <footer th:replace="_fragments :: footer"></footer>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</body>
+</html>
