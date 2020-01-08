@@ -1,6 +1,7 @@
 package com.littlepage.airplaneticketsystem.pojo;
 
 import lombok.*;
+import lombok.experimental.Accessors;
 
 /**
  * Entity Airline
@@ -8,6 +9,7 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Accessors(chain = true)
 public class Airline {
     private String alid;
     private String startPlace;

@@ -43,7 +43,7 @@ public class TestError {
     @RequestMapping("error")
     public String Hello(){
         int math=1/0;
-        return "index";
+        return "admin/index";
     }
 
 }

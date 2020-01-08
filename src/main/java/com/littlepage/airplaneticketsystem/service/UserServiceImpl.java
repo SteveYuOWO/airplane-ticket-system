@@ -5,6 +5,9 @@ import com.littlepage.airplaneticketsystem.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * The implements of UserService
+ */
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired

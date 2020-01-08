@@ -15,28 +15,28 @@
               <div class="ui top attached segment">
                 <div class="ui middle aligned two column grid">
                   <div class="column">
-                    <h3 class="ui teal header">推荐航班</h3>
+                    <h3 class="ui teal header">今日航班</h3>
                   </div>
                   <div class="right aligned column m-grey">
-                    今日共 <h2 class="ui orange header m-inline-block m-text-thin"> 14 </h2> 个航班
+                    今日共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${airflightcount}">  </h2> 个航班
                   </div>
                 </div>
               </div>
     
               <!--content-->
-              <div class="ui attached segment m-vertical-align-middle">
+              <div class="ui attached segment m-vertical-align-middle"  th:each="airflight:${todayTicket}">
                 <div class="ui padded vertical m-padded-tb-mini m-vertical-align-middle">
                     <div class="ui stackable segment attached centered aligned grid m-vertical-align-middle">
                         <div class="ui six wide column centered aligned">
                             <div class="ui big buttons icon">
                                 <button class="ui button basic grey">
-                                  <h3>上海</h3>
+                                  <h3 th:text="${airflight.startPlace}">上海</h3>
                                 </button>
                                 <button class="ui blue button icon">
                                   <i class="right arrow icon circle"></i>
                                 </button>
                                 <button class="ui  button basic grey">
-                                  <h3>非洲</h3>
+                                  <h3 th:text="${airflight.arrivePlace}">非洲</h3>
                                 </button>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                             </h4>
                         </div>
                         <div class="ui four wide column centered aligned m-margin-auto">
-                          <a href="#" class="ui right labeled icon button orange">
+                          <a href="#" th:href="@{/info/ticketInfo/(afid=${airflight.afid})}" class="ui right labeled icon button orange">
                               <i class="shopping cart icon"></i>
                               购买
                           </a>
@@ -57,312 +57,22 @@
                     </div>
                 </div>
               </div>
-              <div class="ui attached segment m-vertical-align-middle">
-                <div class="ui padded vertical m-padded-tb-mini m-vertical-align-middle">
-                    <div class="ui stackable segment attached centered aligned grid m-vertical-align-middle">
-                        <div class="ui six wide column centered aligned">
-                            <div class="ui big buttons icon">
-                                <button class="ui button basic grey">
-                                  <h3>上海</h3>
-                                </button>
-                                <button class="ui blue button icon">
-                                  <i class="right arrow icon circle"></i>
-                                </button>
-                                <button class="ui  button basic grey">
-                                  <h3>非洲</h3>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="ui six wide column centered aligned m-margin-auto">
-                            <h4 class="m-dark-grey icon" style="font-size: medium;">
-                              出发时间：
-                              <span>12:00</span>
-                              <i class="angle double right icon"></i>
-                              <span>13:00</span>
-                            </h4>
-                        </div>
-                        <div class="ui four wide column centered aligned m-margin-auto">
-                          <a href="#" class="ui right labeled icon button orange">
-                              <i class="shopping cart icon"></i>
-                              购买
-                          </a>
-                        </div>
-                    </div>
-                </div>
-              </div>
-              <div class="ui attached segment m-vertical-align-middle">
-                <div class="ui padded vertical m-padded-tb-mini m-vertical-align-middle">
-                    <div class="ui stackable segment attached centered aligned grid m-vertical-align-middle">
-                        <div class="ui six wide column centered aligned">
-                            <div class="ui big buttons icon">
-                                <button class="ui button basic grey">
-                                  <h3>上海</h3>
-                                </button>
-                                <button class="ui blue button icon">
-                                  <i class="right arrow icon circle"></i>
-                                </button>
-                                <button class="ui  button basic grey">
-                                  <h3>非洲</h3>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="ui six wide column centered aligned m-margin-auto">
-                            <h4 class="m-dark-grey icon" style="font-size: medium;">
-                              出发时间：
-                              <span>12:00</span>
-                              <i class="angle double right icon"></i>
-                              <span>13:00</span>
-                            </h4>
-                        </div>
-                        <div class="ui four wide column centered aligned m-margin-auto">
-                          <a href="#" class="ui right labeled icon button orange">
-                              <i class="shopping cart icon"></i>
-                              购买
-                          </a>
-                        </div>
-                    </div>
-                </div>
-              </div>
-              <div class="ui attached segment m-vertical-align-middle">
-                <div class="ui padded vertical m-padded-tb-mini m-vertical-align-middle">
-                    <div class="ui stackable segment attached centered aligned grid m-vertical-align-middle">
-                        <div class="ui six wide column centered aligned">
-                            <div class="ui big buttons icon">
-                                <button class="ui button basic grey">
-                                  <h3>上海</h3>
-                                </button>
-                                <button class="ui blue button icon">
-                                  <i class="right arrow icon circle"></i>
-                                </button>
-                                <button class="ui  button basic grey">
-                                  <h3>非洲</h3>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="ui six wide column centered aligned m-margin-auto">
-                            <h4 class="m-dark-grey icon" style="font-size: medium;">
-                              出发时间：
-                              <span>12:00</span>
-                              <i class="angle double right icon"></i>
-                              <span>13:00</span>
-                            </h4>
-                        </div>
-                        <div class="ui four wide column centered aligned m-margin-auto">
-                          <a href="#" class="ui right labeled icon button orange">
-                              <i class="shopping cart icon"></i>
-                              购买
-                          </a>
-                        </div>
-                    </div>
-                </div>
-              </div>
-              <div class="ui attached segment m-vertical-align-middle">
-                <div class="ui padded vertical m-padded-tb-mini m-vertical-align-middle">
-                    <div class="ui stackable segment attached centered aligned grid m-vertical-align-middle">
-                        <div class="ui six wide column centered aligned">
-                            <div class="ui big buttons icon">
-                                <button class="ui button basic grey">
-                                  <h3>上海</h3>
-                                </button>
-                                <button class="ui blue button icon">
-                                  <i class="right arrow icon circle"></i>
-                                </button>
-                                <button class="ui  button basic grey">
-                                  <h3>非洲</h3>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="ui six wide column centered aligned m-margin-auto">
-                            <h4 class="m-dark-grey icon" style="font-size: medium;">
-                              出发时间：
-                              <span>12:00</span>
-                              <i class="angle double right icon"></i>
-                              <span>13:00</span>
-                            </h4>
-                        </div>
-                        <div class="ui four wide column centered aligned m-margin-auto">
-                          <a href="#" class="ui right labeled icon button orange">
-                              <i class="shopping cart icon"></i>
-                              购买
-                          </a>
-                        </div>
-                    </div>
-                </div>
-              </div><div class="ui attached segment m-vertical-align-middle">
-                <div class="ui padded vertical m-padded-tb-mini m-vertical-align-middle">
-                    <div class="ui stackable segment attached centered aligned grid m-vertical-align-middle">
-                        <div class="ui six wide column centered aligned">
-                            <div class="ui big buttons icon">
-                                <button class="ui button basic grey">
-                                  <h3>上海</h3>
-                                </button>
-                                <button class="ui blue button icon">
-                                  <i class="right arrow icon circle"></i>
-                                </button>
-                                <button class="ui  button basic grey">
-                                  <h3>非洲</h3>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="ui six wide column centered aligned m-margin-auto">
-                            <h4 class="m-dark-grey icon" style="font-size: medium;">
-                              出发时间：
-                              <span>12:00</span>
-                              <i class="angle double right icon"></i>
-                              <span>13:00</span>
-                            </h4>
-                        </div>
-                        <div class="ui four wide column centered aligned m-margin-auto">
-                          <a href="#" class="ui right labeled icon button orange">
-                              <i class="shopping cart icon"></i>
-                              购买
-                          </a>
-                        </div>
-                    </div>
-                </div>
-              </div>
-              <div class="ui attached segment m-vertical-align-middle">
-                <div class="ui padded vertical m-padded-tb-mini m-vertical-align-middle">
-                    <div class="ui stackable segment attached centered aligned grid m-vertical-align-middle">
-                        <div class="ui six wide column centered aligned">
-                            <div class="ui big buttons icon">
-                                <button class="ui button basic grey">
-                                  <h3>上海</h3>
-                                </button>
-                                <button class="ui blue button icon">
-                                  <i class="right arrow icon circle"></i>
-                                </button>
-                                <button class="ui  button basic grey">
-                                  <h3>非洲</h3>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="ui six wide column centered aligned m-margin-auto">
-                            <h4 class="m-dark-grey icon" style="font-size: medium;">
-                              出发时间：
-                              <span>12:00</span>
-                              <i class="angle double right icon"></i>
-                              <span>13:00</span>
-                            </h4>
-                        </div>
-                        <div class="ui four wide column centered aligned m-margin-auto">
-                          <a href="#" class="ui right labeled icon button orange">
-                              <i class="shopping cart icon"></i>
-                              购买
-                          </a>
-                        </div>
-                    </div>
-                </div>
-              </div>
-              <div class="ui attached segment m-vertical-align-middle">
-                <div class="ui padded vertical m-padded-tb-mini m-vertical-align-middle">
-                    <div class="ui stackable segment attached centered aligned grid m-vertical-align-middle">
-                        <div class="ui six wide column centered aligned">
-                            <div class="ui big buttons icon">
-                                <button class="ui button basic grey">
-                                  <h3>上海</h3>
-                                </button>
-                                <button class="ui blue button icon">
-                                  <i class="right arrow icon circle"></i>
-                                </button>
-                                <button class="ui  button basic grey">
-                                  <h3>非洲</h3>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="ui six wide column centered aligned m-margin-auto">
-                            <h4 class="m-dark-grey icon" style="font-size: medium;">
-                              出发时间：
-                              <span>12:00</span>
-                              <i class="angle double right icon"></i>
-                              <span>13:00</span>
-                            </h4>
-                        </div>
-                        <div class="ui four wide column centered aligned m-margin-auto">
-                          <a href="#" class="ui right labeled icon button orange">
-                              <i class="shopping cart icon"></i>
-                              购买
-                          </a>
-                        </div>
-                    </div>
-                </div>
-              </div>
-              <div class="ui attached segment m-vertical-align-middle">
-                <div class="ui padded vertical m-padded-tb-mini m-vertical-align-middle">
-                    <div class="ui stackable segment attached centered aligned grid m-vertical-align-middle">
-                        <div class="ui six wide column centered aligned">
-                            <div class="ui big buttons icon">
-                                <button class="ui button basic grey">
-                                  <h3>上海</h3>
-                                </button>
-                                <button class="ui blue button icon">
-                                  <i class="right arrow icon circle"></i>
-                                </button>
-                                <button class="ui  button basic grey">
-                                  <h3>非洲</h3>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="ui six wide column centered aligned m-margin-auto">
-                            <h4 class="m-dark-grey icon" style="font-size: medium;">
-                              出发时间：
-                              <span>12:00</span>
-                              <i class="angle double right icon"></i>
-                              <span>13:00</span>
-                            </h4>
-                        </div>
-                        <div class="ui four wide column centered aligned m-margin-auto">
-                          <a href="#" class="ui right labeled icon button orange">
-                              <i class="shopping cart icon"></i>
-                              购买
-                          </a>
-                        </div>
-                    </div>
-                </div>
-              </div>
-              <div class="ui attached segment m-vertical-align-middle">
-                <div class="ui padded vertical m-padded-tb-mini m-vertical-align-middle">
-                    <div class="ui stackable segment attached centered aligned grid m-vertical-align-middle">
-                        <div class="ui six wide column centered aligned">
-                            <div class="ui big buttons icon">
-                                <button class="ui button basic grey">
-                                  <h3>上海</h3>
-                                </button>
-                                <button class="ui blue button icon">
-                                  <i class="right arrow icon circle"></i>
-                                </button>
-                                <button class="ui  button basic grey">
-                                  <h3>非洲</h3>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="ui six wide column centered aligned m-margin-auto">
-                            <h4 class="m-dark-grey icon" style="font-size: medium;">
-                              出发时间：
-                              <span>12:00</span>
-                              <i class="angle double right icon"></i>
-                              <span>13:00</span>
-                            </h4>
-                        </div>
-                        <div class="ui four wide column centered aligned m-margin-auto">
-                          <a href="#" class="ui right labeled icon button orange">
-                              <i class="shopping cart icon"></i>
-                              购买
-                          </a>
-                        </div>
-                    </div>
-                </div>
-              </div>
-
     
               <!--footer-->
               <div class="ui bottom attached segment">
-                <div class="ui middle aligned two column grid">
+                <div class="ui middle aligned three column grid">
                   <div class="column">
-                    <a href="#" class="ui mini teal basic button">上一页</a>
+                    <a href="#" th:href="@{/index(pageIndex=${page.index}-1)}" th:if=" ${page.index} ne 0" class="ui mini teal basic button">上一页</a>
+                  </div>
+                  <div class="column m-grey m-padded-tb-mini" style="padding-left: 7%;padding-top: 1%">
+                          第
+                        <h4 class="ui orange header m-inline-block m-text-thin" th:text="${page.index}+1"></h4>
+                          页/共
+                        <h4 class="ui orange header m-inline-block m-text-thin" th:text="${page.pageNumber}+1"></h4>
+                          页
                   </div>
                   <div class="right aligned column">
-                    <a href="#" class="ui mini teal basic button">下一页</a>
+                    <a href="#" th:href="@{/index/(pageIndex=${page.index}+1)}" th:if=" ${page.index} ne ${page.pageNumber}" class="ui mini teal basic button">下一页</a>
                   </div>
                 </div>
               </div>

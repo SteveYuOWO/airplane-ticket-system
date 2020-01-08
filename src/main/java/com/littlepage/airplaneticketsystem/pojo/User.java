@@ -1,6 +1,7 @@
 package com.littlepage.airplaneticketsystem.pojo;
 
 import lombok.*;
+import lombok.experimental.Accessors;
 
 
 /**
@@ -9,10 +10,11 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Accessors(chain = true)
 public class User {
     private String uid;
     private String username;
-    private Boolean sex;
+    private Character sex;
     private Integer age;
     private String identityNum;
     private Integer level;

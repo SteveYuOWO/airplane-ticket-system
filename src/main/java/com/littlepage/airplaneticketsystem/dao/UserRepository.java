@@ -26,7 +26,7 @@ public class UserRepository {
             if(rs.next()){
                 return new User(rs.getString("uid"),
                         rs.getString("username"),
-                        rs.getBoolean("sex"),
+                        rs.getString("sex").charAt(0),
                         rs.getInt("age"),
                         rs.getString("identity_num"),
                         rs.getInt("level"),
@@ -55,7 +55,7 @@ public class UserRepository {
             if(rs.next()){
                 return new User(rs.getString("uid"),
                         rs.getString("username"),
-                        rs.getBoolean("sex"),
+                        rs.getString("sex").charAt(0),
                         rs.getInt("age"),
                         rs.getString("identity_num"),
                         rs.getInt("level"),

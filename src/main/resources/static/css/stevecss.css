@@ -107,6 +107,10 @@
 	margin-top: 6px !important;
 	margin-bottom: 6px !important;
 }
+.m-margin-zero{
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
 .m-margin-auto{
 	margin: auto !important;
 }
