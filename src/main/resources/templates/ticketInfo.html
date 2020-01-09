@@ -114,59 +114,9 @@
 
     
             </div>
-    
-            <!--右边的top-->
-            <div class="five wide column">
-              <!-- 查询航班 -->
-              <div class="ui segments">
-                <div class="ui secondary segment">
-                  <div class="ui two column grid">
-                    <div class="column">
-                      <i class="idea icon"></i>查询航班
-                    </div>
-                  </div>
-                </div>
-                <div class="ui teal segment attach">
-                    <div class="ui icon input fluid m-padded-top-bottom-small">
-                      <input type="text" placeholder="出发城市">
-                    </div>
-                    <div class="ui icon input fluid m-padded-top-bottom-small">
-                      <input type="text" placeholder="到达城市">
-                    </div>
-                    <div class="ui input fluid m-padded-top-bottom-small">
-                      <button class="ui button icon fluid padded">
-                        查询
-                        <i class="search icon"></i>
-                      </button>
-                    </div>
-                </div>
-              </div>
-              <br>
-              <br>
-              <!--查询城市-->
-              <div class="ui segments">
-                <div class="ui secondary segment">
-                  <div class="ui two column grid">
-                    <div class="column">
-                      <i class="idea icon"></i>查询城市
-                    </div>
-                  </div>
-                </div>
-                <div class="ui teal segment attach">
-                    <div class="ui icon input fluid m-padded-top-bottom-small">
-                      <input type="text" placeholder="请输入查询的城市">
-                    </div>
+              <!--右边的top-->
+              <div th:replace="_fragments :: rightsearch"></div>
 
-                    <div class="ui input fluid m-padded-top-bottom-small">
-                      <button class="ui button icon fluid padded">
-                        查询
-                        <i class="search icon"></i>
-                      </button>
-                    </div>
-                </div>
-              </div>
-            </div>
-    
           </div>
         </div>
     

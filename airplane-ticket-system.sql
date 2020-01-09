@@ -9,8 +9,8 @@ CREATE TABLE t_user(
 	[sex] CHAR(1) default 'M' check ([sex] in ('M','F')),
 	[age] INT,
 	[identity_num] VARCHAR(20),
-	[level] INT,
-	[consume_money] decimal(8,2),
+	[level] INT default 0,
+	[consume_money] decimal(8,2) default 0,
 	[address] VARCHAR(255),
 	[mobile_num] VARCHAR(15),
 	[password] CHAR(32) NOT NULL,
@@ -87,3 +87,7 @@ select top 3 * from today_ticket_simple
 where afid not in (
     select top 6 afid from today_ticket_simple
 )
+
+
+
+

@@ -22,35 +22,43 @@
               <div class="column">
                 <h2 class="ui teal image header">
                   <div class="content">
-                    注册
+                    信息修改
                   </div>
                 </h2>
-                <form class="ui large form" method="post" action="#" th:action="@{/admin/register/valiRegister}">
+                <form class="ui large form" method="post" action="#" th:action="@{/personalInfo/modifyProcess}">
                   <div class="ui  segment">
+
+                      <div class="field">
+                          <div class="ui left input">
+                              <input type="text" name="sex" placeholder="性别">
+                          </div>
+                      </div>
                     <div class="field">
-                      <div class="ui left icon input">
-                        <i class="user icon"></i>
-                        <input type="text" name="username" placeholder="用户名">
+                      <div class="ui left input">
+                        <input type="text" name="age" placeholder="年龄">
                       </div>
                     </div>
-                    <div class="field">
-                      <div class="ui left icon input">
-                        <i class="lock icon"></i>
-                        <input type="password" name="password" placeholder="请输入密码">
+                      <div class="field">
+                          <div class="ui left input">
+                              <input type="text" name="identityNum" placeholder="身份证号">
+                          </div>
                       </div>
-                    </div>
-                    <div class="field">
-                      <div class="ui left icon input">
-                        <i class="lock icon"></i>
-                        <input type="password" name="passwordRepeat" placeholder="再次输入密码">
+                      <div class="field">
+                          <div class="ui left input">
+                              <input type="text" name="address" placeholder="地址">
+                          </div>
                       </div>
-                    </div>
-                    <button class="ui fluid large teal submit button">注   册</button>
+                      <div class="field">
+                          <div class="ui left input">
+                              <input type="text" name="mobileNum" placeholder="手机号">
+                          </div>
+                      </div>
+
+                    <button class="ui fluid large teal submit button">修   改</button>
                   </div>
 
                     <div class="ui error mini message"></div>
-                    <div class="ui mini negative message" th:unless="${#strings.isEmpty(registerMessage)}" th:text="${registerMessage}">用户名和密码错误</div>
-
+                    <div class="ui mini negative message" th:unless="${#strings.isEmpty(modifymessage)}" th:text="${modifymessage}"></div>
                 </form>
        
               </div>
@@ -58,6 +66,7 @@
 
               <!--右边的top-->
               <div th:replace="_fragments :: rightsearch"></div>
+
 
           </div>
         </div>

@@ -14,16 +14,31 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * ticket Info
+ */
 @Controller
 @RequestMapping("info")
 public class TicketInfo {
 
+    /**
+     * ticket detail service
+     */
     @Autowired
     private TicketDetailsService ticketDetailsService;
 
+    /**
+     * ticket number service
+     */
     @Autowired
     private TicketNumberService ticketNumberService;
 
+    /**
+     * ticket info
+     * @param afid the id of air flight
+     * @param model model
+     * @return ticket info page
+     */
     @RequestMapping("ticketInfo")
     public String ticketInfo(String afid, Model model){
         /**
@@ -45,6 +60,14 @@ public class TicketInfo {
         return "ticketInfo";
     }
 
+    /**
+     * buy method
+     * @param type
+     * @param afid
+     * @param httpSession
+     * @param model
+     * @return
+     */
     @GetMapping("buy/{type}/{afid}")
     @ResponseBody
     public String buy(@PathVariable String type,

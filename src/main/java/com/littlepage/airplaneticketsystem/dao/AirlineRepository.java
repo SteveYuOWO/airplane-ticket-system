@@ -13,8 +13,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.UUID;
 
+/**
+ * airline resporistory
+ */
 @Repository
 public class AirlineRepository {
+    /**
+     * add airline method
+     * @param airline
+     */
     public void addAirline(Airline airline){
         Connection conn = DBUtils.getConnection();
         Statement stmt = DBUtils.getStatement(conn);
@@ -25,6 +32,12 @@ public class AirlineRepository {
                 airline.getPPID()+"')");
     }
 
+    /**
+     * get airline method
+     * @param startPlace start place
+     * @param arrivePlace arrive place
+     * @return
+     */
     public Airline getAirline(String startPlace,String arrivePlace){
         Airline airline = null;
         Connection conn = DBUtils.getConnection();
@@ -45,6 +58,11 @@ public class AirlineRepository {
         return airline;
     }
 
+    /**
+     * get airlines
+     * @param place the start place or arrive place
+     * @return the arraylist contains airlines
+     */
     public ArrayList<Airline> getAirline(String place){
         ArrayList<Airline> arr = new ArrayList<>();
         Airline airline = null;

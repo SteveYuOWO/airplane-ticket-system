@@ -81,4 +81,18 @@ public class UserRepository {
         Statement stmt = DBUtils.getStatement(conn);
         DBUtils.execute(stmt,"insert t_user(username,password,uid) values('"+username+"','"+password+"','"+uid+"')");
     }
+
+    /**
+     * 更新User
+     * @param user
+     */
+    public void updateUser(User user) {
+        Connection conn = DBUtils.getConnection();
+        Statement stmt = DBUtils.getStatement(conn);
+        DBUtils.executeQuery(stmt,"update t_user set sex='"+user.getSex()
+                +"',age="+user.getAge()
+                +",identity_num='"+user.getIdentityNum()
+                +"',address='"+user.getAddress()+"',mobile_num='"
+                +user.getMobileNum()+"' where uid='"+user.getUid()+"'");
+    }
 }

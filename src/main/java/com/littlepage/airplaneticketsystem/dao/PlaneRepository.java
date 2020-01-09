@@ -8,8 +8,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * the plane repository
+ */
 @Repository
 public class PlaneRepository {
+    /**
+     * add plane
+     * @param plane
+     */
     public void addPlane(Plane plane){
         Connection conn = DBUtils.getConnection();
         Statement stmt = DBUtils.getStatement(conn);
@@ -21,6 +28,11 @@ public class PlaneRepository {
                 plane.getCid()+"')");
     }
 
+    /**
+     * get plane
+     * @param place
+     * @return
+     */
     public Plane getPlane(String place){
         Plane plane = null;
         Connection conn = DBUtils.getConnection();
@@ -43,6 +55,11 @@ public class PlaneRepository {
         return plane;
     }
 
+    /**
+     * get plane by air flight
+     * @param afid
+     * @return
+     */
     public Plane getPlaneByAfid(String afid){
         Plane plane = null;
         Connection conn = DBUtils.getConnection();

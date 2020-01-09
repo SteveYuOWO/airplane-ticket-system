@@ -23,25 +23,53 @@ import java.util.UUID;
 @RequestMapping("admin")
 public class LoginAndRegister {
 
+    /**
+     * today ticket service
+     *
+     * from a database view
+     */
     @Autowired
     TodayTicketService todayTicketService;
 
+    /**
+     * air flight service
+     */
     @Autowired
     private AirflightService airflightService;
 
+    /**
+     * user service
+     */
     @Autowired
     private UserService userService;
 
+    /**
+     * login page
+     * @return page resource address
+     */
     @RequestMapping("login")
     public String login(){
         return "login";
     }
 
+    /**
+     * register page
+     * @return page resource address
+     */
     @RequestMapping("register")
     public String register(){
         return "register";
     }
 
+    /**
+     * login validation
+     * @param username user name
+     * @param password password
+     * @param session session
+     * @param attributes attributes for redirect
+     * @param model Model object
+     * @return success or not success
+     */
     @PostMapping("login/valiLogin")
     public String login(@RequestParam String username,
                         @RequestParam String password,
@@ -56,6 +84,7 @@ public class LoginAndRegister {
         User user = userService.findUser(username, password);
         if (user != null) {
             user.setPassword(null);
+            session.setMaxInactiveInterval(30*24*60*60);
             session.setAttribute("user",user);
             Page page = new Page();
             page.setPageNumber(airflightService.countAirflightService()/10).
@@ -71,12 +100,27 @@ public class LoginAndRegister {
         }
     }
 
+    /**
+     * log out user
+     *
+     * remove login information
+     * @param session session
+     * @return the login page
+     */
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.removeAttribute("user");
         return "redirect:/admin/login";
     }
 
+    /**
+     * validate the register info
+     * @param username user name
+     * @param password password
+     * @param passwordRepeat passwordRepeat
+     * @param attributes attributes
+     * @return valiRegister
+     */
     @PostMapping("register/valiRegister")
     public String valiRegister(@RequestParam String username,
                                @RequestParam String password,

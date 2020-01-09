@@ -17,9 +17,18 @@ import javax.servlet.http.HttpServletRequest;
  */
 @ControllerAdvice
 public class ControllerExceptionHandle {
-
+    /**
+     * logger from log4j
+     */
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    /**
+     * log the url and exception
+     * @param request
+     * @param e
+     * @return
+     * @throws Exception
+     */
     @ExceptionHandler(Exception.class)
     public ModelAndView exceptionHander(HttpServletRequest request, Exception e) throws Exception {
         logger.error("Requst URL : {}，Exception : {}", request.getRequestURL(),e);

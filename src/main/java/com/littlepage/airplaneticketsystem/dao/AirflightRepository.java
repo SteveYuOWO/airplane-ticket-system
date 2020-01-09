@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 
+/**
+ * air flight repository
+ */
 @Repository
 public class AirflightRepository {
     /**
@@ -69,21 +72,5 @@ public class AirflightRepository {
             e.printStackTrace();
         }
         return count;
-    }
-
-    /**
-     * Not Test
-     * @param args
-     */
-    public static void main(String[] args) {
-        Airflight af = new Airflight();
-        af.setAfId(AirflightUUID.getAirflightUUID()).
-                setStartTime(DateUtils.getDate("2020-1-8 15:00")).
-                setArriveTime(DateUtils.getDate("2020-1-8 16:00")).
-                setTouristPrice(300.0).
-                setFirstPrice(800.0).
-                setBusinessPrice(400.0).
-                setAlid(new AirlineRepository().getAirline("上海","哈尔滨").getAlid());
-        new AirflightRepository().addAirflight(af);
     }
 }

@@ -24,7 +24,6 @@
             <div class="ui inverted menu stackable">
                 <h2 class="ui teal header item">民航订票管理系统</h2>
                 <a href="#" th:href="@{/}" class="m-item item m-mobile-hide">首页</a>
-                <a href="#" th:href="@{/search/searchPage}" class="m-item item m-mobile-hide">查询购票</a>
                 <a href="#" class="m-item item m-mobile-hide">我的票务</a>
                 <a href="#" th:href="@{/personalInfo/infoPage}" class="m-item item m-mobile-hide">个人中心</a>
                 <div th:if="${session.user} == null" class="ui inverted segment m-margin-auto m-mobile-hide m-item">
@@ -49,6 +48,67 @@
             <i class="sidebar teal icon button big"></i>
         </a>
     </nav>
+
+
+    <div th:fragment="rightsearch" class="five wide column">
+        <!-- 查询航班 -->
+        <div class="ui segments">
+            <div class="ui secondary segment">
+                <div class="ui two column grid">
+                    <div class="column">
+                        <i class="idea icon"></i>查询城市
+                    </div>
+                </div>
+            </div>
+            <div class="ui teal segment attach">
+                <form class="ui" action="/search/place" method="post">
+                    <div class="ui icon input fluid m-padded-top-bottom-small">
+                        <input type="text" placeholder="出发城市" name="startPlace">
+                    </div>
+                    <div class="ui icon input fluid m-padded-top-bottom-small">
+                        <input type="text" placeholder="到达城市" name="arrivePlace">
+                    </div>
+                    <div class="ui input fluid m-padded-top-bottom-small">
+                        <button type="submit" class="ui button icon fluid padded">
+                            查询
+                            <i class="search icon"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br>
+        <br>
+        <!--查询城市-->
+        <div class="ui segments">
+            <div class="ui secondary segment">
+                <div class="ui two column grid">
+                    <div class="column">
+                        <i class="idea icon"></i>查询城市及时间
+                    </div>
+                </div>
+            </div>
+            <div class="ui teal segment attach">
+                <form class="ui" action="/search/place" method="post">
+                    <div class="ui icon input fluid m-padded-top-bottom-small">
+                        <input type="text" placeholder="出发城市" name="startPlace">
+                    </div>
+                    <div class="ui icon input fluid m-padded-top-bottom-small">
+                        <input type="text" placeholder="到达城市" name="arrivePlace">
+                    </div>
+                    <div class="ui icon input fluid m-padded-top-bottom-small">
+                        <input type="date" name="searchDate">
+                    </div>
+                    <div class="ui input fluid m-padded-top-bottom-small">
+                        <button class="ui button icon fluid padded">
+                            查询
+                            <i class="search icon"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 
     <!--底部footer-->

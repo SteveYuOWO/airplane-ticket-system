@@ -15,6 +15,10 @@ import java.util.UUID;
  */
 @Repository
 public class CompanyRepository {
+    /**
+     * add company
+     * @param company
+     */
     public void addCompany(Company company){
         Connection conn = DBUtils.getConnection();
         Statement stmt = DBUtils.getStatement(conn);
@@ -25,6 +29,11 @@ public class CompanyRepository {
                 +company.getAddress()+"');");
     }
 
+    /**
+     * get company by name
+     * @param name
+     * @return the company object
+     */
     public Company getCompanyByName(String name){
         Connection conn = DBUtils.getConnection();
         Statement stmt = DBUtils.getStatement(conn);

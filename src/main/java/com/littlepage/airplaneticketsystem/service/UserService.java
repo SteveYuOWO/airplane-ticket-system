@@ -28,4 +28,11 @@ public interface UserService {
      * @param password
      */
     void addUser(String uid,String username, String password);
+
+    /**
+     * 更新user
+     * @param user
+     * @return
+     */
+    boolean updateUser(User user);
 }

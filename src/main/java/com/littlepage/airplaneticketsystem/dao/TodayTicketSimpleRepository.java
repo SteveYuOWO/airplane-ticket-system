@@ -1,6 +1,7 @@
 package com.littlepage.airplaneticketsystem.dao;
 
 import com.littlepage.airplaneticketsystem.utils.DBUtils;
+import com.littlepage.airplaneticketsystem.utils.DateUtils;
 import com.littlepage.airplaneticketsystem.utils.Page;
 import com.littlepage.airplaneticketsystem.vojo.TodayTicketSimple;
 import org.springframework.stereotype.Repository;
@@ -37,8 +38,8 @@ public class TodayTicketSimpleRepository {
                 todayTicketSimple = new TodayTicketSimple(rs.getString("afid"),
                         rs.getString("start_place"),
                         rs.getString("arrive_place"),
-                        rs.getDate("start_time"),
-                        rs.getDate("arrive_time"));
+                        DateUtils.getDate(rs.getString("start_time")),
+                        DateUtils.getDate(rs.getString("arrive_time")));
                 arr.add(todayTicketSimple);
             }
         }catch (SQLException e){
@@ -46,4 +47,66 @@ public class TodayTicketSimpleRepository {
         }
         return arr;
     }
+
+    /**
+     * get ticket by start place and arrive place
+     * @param startPlace
+     * @param arrivePlace
+     * @return
+     */
+    public ArrayList<TodayTicketSimple> getTicketByStartPlaceAndArrivePlace(String startPlace,String arrivePlace){
+        ArrayList<TodayTicketSimple> arr = new ArrayList<>();
+        TodayTicketSimple todayTicketSimple;
+        Connection conn = DBUtils.getConnection();
+        Statement stmt = DBUtils.getStatement(conn);
+        String sql = "select * from today_ticket_simple where start_place='"+
+                startPlace+"' and arrive_place='"+arrivePlace+"'";
+        ResultSet rs = DBUtils.executeQuery(stmt, sql);
+        try{
+            while (rs.next()){
+                todayTicketSimple = new TodayTicketSimple(rs.getString("afid"),
+                        rs.getString("start_place"),
+                        rs.getString("arrive_place"),
+                        DateUtils.getDate(rs.getString("start_time")),
+                        DateUtils.getDate(rs.getString("arrive_time")));
+                arr.add(todayTicketSimple);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return arr;
+    }
+
+    /**
+     * get ticket by start place and arrive place and date
+     * @param startPlace
+     * @param arrivePlace
+     * @param date
+     * @return
+     */
+    public ArrayList<TodayTicketSimple> getTicketByStartPlaceAndArrivePlaceAndDate(String startPlace,String arrivePlace,String date){
+        ArrayList<TodayTicketSimple> arr = new ArrayList<>();
+        TodayTicketSimple todayTicketSimple;
+        Connection conn = DBUtils.getConnection();
+        Statement stmt = DBUtils.getStatement(conn);
+        String sql = "select * from today_ticket_simple where start_place='"+startPlace
+                +"' and arrive_place='"+arrivePlace+"' and DATEDIFF(dd, start_time, '"+date+"')=0";
+        ResultSet rs = DBUtils.executeQuery(stmt, sql);
+        try{
+            while (rs.next()){
+                todayTicketSimple = new TodayTicketSimple(rs.getString("afid"),
+                        rs.getString("start_place"),
+                        rs.getString("arrive_place"),
+                        DateUtils.getDate(rs.getString("start_time")),
+                        DateUtils.getDate(rs.getString("arrive_time")));
+                arr.add(todayTicketSimple);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return arr;
+    }
+
+    //
+    //select * from today_ticket_simple where start_place='西藏' and arrive_place='山西省' and DATEDIFF(dd, start_time, GETDATE())=0
 }

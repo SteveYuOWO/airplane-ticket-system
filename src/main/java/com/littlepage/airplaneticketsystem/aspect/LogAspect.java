@@ -15,8 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * Logging Aspect & store the info data to the console or file
- *
- *
  */
 @Aspect
 @Component

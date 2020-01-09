@@ -2,19 +2,31 @@ package com.littlepage.airplaneticketsystem.controller;
 
 import com.littlepage.airplaneticketsystem.service.AirflightService;
 import com.littlepage.airplaneticketsystem.service.TodayTicketService;
+import com.littlepage.airplaneticketsystem.service.TodayTicketServiceImpl;
 import com.littlepage.airplaneticketsystem.utils.Page;
+import com.littlepage.airplaneticketsystem.vojo.TodayTicketSimple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+
+/**
+ * Index page
+ */
 @Controller
 @RequestMapping
 public class Index {
-
+    /**
+     * air flight service
+     */
     @Autowired
     private AirflightService airflightService;
 
+    /**
+     * today ticket Service
+     */
     @Autowired
     private TodayTicketService todayTicketService;
 
@@ -34,6 +46,12 @@ public class Index {
         return "index";
     }
 
+    /**
+     * 
+     * @param model
+     * @param pageIndex
+     * @return
+     */
     @RequestMapping("/index{pageIndex}")
     public String index(Model model, int pageIndex){
         Page page = new Page();

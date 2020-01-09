@@ -6,15 +6,28 @@ import com.littlepage.airplaneticketsystem.vojo.TicketDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * ticket Number Service impl
+ */
 @Service
 public class TicketNumberServiceImpl implements TicketNumberService{
 
+    /**
+     * plane repository
+     */
     @Autowired
     private PlaneRepository planeRepository;
 
+    /**
+     * ticket details service
+     */
     @Autowired
     private TicketDetailsService ticketDetailsService;
 
+    /**
+     * set ticket number
+     * @param ticketDetails
+     */
     @Override
     public void setTicketNumber(TicketDetails ticketDetails) {
         int h = ticketDetailsService.getTicketCount("h", ticketDetails.getAfid());
