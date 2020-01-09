@@ -18,7 +18,7 @@ public class User {
     private Integer age;
     private String identityNum;
     private Integer level;
-    private Long score;
+    private Double consumeMoney;
     private String address;
     private String mobileNum;
     private String password;

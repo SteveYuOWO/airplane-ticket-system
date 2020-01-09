@@ -30,7 +30,7 @@ public class UserRepository {
                         rs.getInt("age"),
                         rs.getString("identity_num"),
                         rs.getInt("level"),
-                        rs.getLong("score"),
+                        rs.getDouble("consume_money"),
                         rs.getString("address"),
                         rs.getString("mobile_num"),
                         rs.getString("password"));
@@ -59,7 +59,7 @@ public class UserRepository {
                         rs.getInt("age"),
                         rs.getString("identity_num"),
                         rs.getInt("level"),
-                        rs.getLong("score"),
+                        rs.getDouble("consume_money"),
                         rs.getString("address"),
                         rs.getString("mobile_num"),
                         rs.getString("password"));

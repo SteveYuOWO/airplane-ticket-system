@@ -89,18 +89,19 @@
                       <table>
                           <thead>
                             <tr>
+<!--                                bug-->
                                 <th>
-                                    <a class="ui button teal basic">
+                                    <a th:href="@{'/info/buy/h/'+${ticket.afid}}" class="ui button teal basic" onclick="confirm('是否确认购买?');">
                                         购买头等舱
                                     </a>
                                 </th>
                                 <th>
-                                    <a class="ui button teal basic">
+                                    <a th:href="@{'/info/buy/b/'+${ticket.afid}}" class="ui button teal basic" onclick="confirm('是否确认购买?');">
                                         购买商务舱
                                     </a>
                                 </th>
                                 <th>
-                                    <a class="ui button teal basic">
+                                    <a th:href="@{'/info/buy/t/'+${ticket.afid}}" class="ui button teal basic" onclick="confirm('是否确认购买?');">
                                         购买经济舱
                                     </a>
                                 </th>

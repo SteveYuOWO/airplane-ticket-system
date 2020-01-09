@@ -10,7 +10,7 @@ CREATE TABLE t_user(
 	[age] INT,
 	[identity_num] VARCHAR(20),
 	[level] INT,
-	[score] INT,
+	[consume_money] decimal(8,2),
 	[address] VARCHAR(255),
 	[mobile_num] VARCHAR(15),
 	[password] CHAR(32) NOT NULL,
@@ -57,12 +57,13 @@ ALTER TABLE t_airflight ADD CONSTRAINT ck_airflight check (afid like 'G[0-9][0-9
 
 DROP TABLE IF EXISTS t_ticket;
 CREATE TABLE t_ticket(
-	tid CHAR(36) NOT NULL PRIMARY KEY,
-	purchase_time DATETIME,
-	seat_num INT,
-	[uid] CHAR(36) FOREIGN KEY REFERENCES t_user([uid]),
-	afid VARCHAR (36) FOREIGN KEY REFERENCES t_airflight(afid),
-);
+       tid CHAR(36) NOT NULL PRIMARY KEY,
+       purchase_time DATETIME,
+       seat_num INT,
+       seat_type VARCHAR(1),
+       [uid] CHAR(36) FOREIGN KEY REFERENCES t_user([uid]),
+       afid VARCHAR (36) FOREIGN KEY REFERENCES t_airflight(afid)
+  );
 
 -- for index page select convenient
 CREATE VIEW today_ticket_simple as
@@ -86,5 +87,3 @@ select top 3 * from today_ticket_simple
 where afid not in (
     select top 6 afid from today_ticket_simple
 )
-
-select count(tid) from t_ticket where seat_type='h' and afid='G0027'

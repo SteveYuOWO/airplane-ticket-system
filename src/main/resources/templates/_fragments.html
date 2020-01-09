@@ -26,7 +26,7 @@
                 <a href="#" th:href="@{/}" class="m-item item m-mobile-hide">首页</a>
                 <a href="#" th:href="@{/search/searchPage}" class="m-item item m-mobile-hide">查询购票</a>
                 <a href="#" class="m-item item m-mobile-hide">我的票务</a>
-                <a href="#" class="m-item item m-mobile-hide">个人中心</a>
+                <a href="#" th:href="@{/personalInfo/infoPage}" class="m-item item m-mobile-hide">个人中心</a>
                 <div th:if="${session.user} == null" class="ui inverted segment m-margin-auto m-mobile-hide m-item">
                     <a href="#" th:href="@{/admin/login}" class="ui inverted basic button big m-padded-middle-button">
                         登陆

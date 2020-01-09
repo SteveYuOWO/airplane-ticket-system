@@ -27,11 +27,10 @@ public class TodayTicketSimpleRepository {
         TodayTicketSimple todayTicketSimple;
         Connection conn = DBUtils.getConnection();
         Statement stmt = DBUtils.getStatement(conn);
-        String sql = "select top " + page.getPageNumber() + " * from today_ticket_simple\n" +
+        String sql = "select top " + page.getPageSize() + " * from today_ticket_simple\n" +
                 "where afid not in (\n" +
                 "select top " + page.getNotInTopNumber() + " afid from today_ticket_simple\n" +
                 ")";
-
         ResultSet rs = DBUtils.executeQuery(stmt, sql);
         try{
             while (rs.next()){
