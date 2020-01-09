@@ -88,6 +88,23 @@ where afid not in (
     select top 6 afid from today_ticket_simple
 )
 
+-- purchase procedure
+create procedure purchase
+    @tid char(36),
+    @purchase_time datetime,
+    @seat_num int,
+    @seat_type varchar(50),
+    @uid char(36),
+    @afid char(36)
+AS
+    BEGIN
+        insert t_ticket values (@tid,@purchase_time,@seat_num,@seat_type,@uid,@afid)
+    end
 
+-- Test procedure
+    declare @date datetime=''
+    exec purchase 'sadasd',
+    @date, '121',
+    'h','8a11985b-b540-4bfb-8b2c-32d9e76fa8e3','G0029'
 
 

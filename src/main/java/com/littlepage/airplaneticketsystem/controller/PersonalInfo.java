@@ -46,7 +46,7 @@ public class PersonalInfo {
      */
     @RequestMapping("modifiyResult")
     public String modifyResult(){
-        return "modifiyResult";
+        return "result";
     }
 
     /**
