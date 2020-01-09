@@ -24,7 +24,7 @@
             <div class="ui inverted menu stackable">
                 <h2 class="ui teal header item">民航订票管理系统</h2>
                 <a href="#" th:href="@{/}" class="m-item item m-mobile-hide">首页</a>
-                <a href="#" class="m-item item m-mobile-hide">我的票务</a>
+                <a href="#" th:href="@{/info/myticket}" class="m-item item m-mobile-hide">我的票务</a>
                 <a href="#" th:href="@{/personalInfo/infoPage}" class="m-item item m-mobile-hide">个人中心</a>
                 <div th:if="${session.user} == null" class="ui inverted segment m-margin-auto m-mobile-hide m-item">
                     <a href="#" th:href="@{/admin/login}" class="ui inverted basic button big m-padded-middle-button">

@@ -107,4 +107,10 @@ AS
     @date, '121',
     'h','8a11985b-b540-4bfb-8b2c-32d9e76fa8e3','G0029'
 
-
+-- VIP trigger
+create trigger vipTrigger on t_user
+    for update
+    as
+    declare @uid char(36),@money decimal(8,2),@init_money decimal(8,2)
+    select @uid=uid,@money=consume_money from inserted
+    update t_user set level=(@money)/1000 where uid=@uid

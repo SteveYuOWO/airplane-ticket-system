@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class SearchPlace {
      */
     @PostMapping("place")
     public String searchInfo(String startPlace, String arrivePlace, String searchDate,
-                             Model model){
+                             Model model, RedirectAttributes attributes){
         List<TodayTicketSimple> todayTicketSimples = null;
         if(searchDate==null||searchDate.equals("")){
             todayTicketSimples = searchService.searchAirflights(startPlace, arrivePlace);
@@ -47,6 +48,7 @@ public class SearchPlace {
         page.setPageNumber(0).
                 setPageSize(todayTicketSimples.size()).setIndex(0);
         model.addAttribute("page",page);
+        model.addAttribute("title","查询结果");
         return "index";
     }
 }

@@ -95,4 +95,14 @@ public class UserRepository {
                 +"',address='"+user.getAddress()+"',mobile_num='"
                 +user.getMobileNum()+"' where uid='"+user.getUid()+"'");
     }
+
+    /**
+     * update money
+     * @param user
+     */
+    public void updateMoney(User user) {
+        Connection conn = DBUtils.getConnection();
+        Statement stmt = DBUtils.getStatement(conn);
+        DBUtils.execute(stmt,"update t_user set consume_money = "+user.getConsumeMoney()+" where uid = '"+user.getUid()+"'");
+    }
 }

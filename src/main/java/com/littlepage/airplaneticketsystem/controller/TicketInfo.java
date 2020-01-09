@@ -5,18 +5,18 @@ import com.littlepage.airplaneticketsystem.pojo.User;
 import com.littlepage.airplaneticketsystem.service.TicketDetailsService;
 import com.littlepage.airplaneticketsystem.service.TicketNumberService;
 import com.littlepage.airplaneticketsystem.service.TicketService;
+import com.littlepage.airplaneticketsystem.service.VipService;
 import com.littlepage.airplaneticketsystem.vojo.TicketDetails;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -38,8 +38,17 @@ public class TicketInfo {
     @Autowired
     private TicketNumberService ticketNumberService;
 
+    /**
+     * ticket service
+     */
     @Autowired
     private TicketService ticketService;
+
+    /**
+     * vipService
+     */
+    @Autowired
+    private VipService vipService;
 
     /**
      * ticket info
@@ -85,7 +94,7 @@ public class TicketInfo {
         Ticket ticket = new Ticket();
         TicketDetails ticketDetails = ticketDetailsService.getTicketDetails(afid);
         /**
-         * 剩余票数
+         * release ticket
          */
         if((type.equals("h")&&ticketDetails.getFirstRelease()==0)&&
                 (type.equals("b")&&ticketDetails.getBusinessRelease()==0)&&
@@ -93,6 +102,17 @@ public class TicketInfo {
             attributes.addFlashAttribute("message","购买失败");
             return "redirect:/info/purchaseResult";
         }
+        /**
+         * one person should have one same ticket
+         */
+        if(ticketService.getTicketByUidAndAfid(user.getUid(),afid)!=null){
+            attributes.addFlashAttribute("message","不能重复购票");
+            return "redirect:/info/purchaseResult";
+        }
+        /**
+         * add consume_money
+         */
+        vipService.consumeMoney(user.getUsername(),afid,type);
         ticket.setTID(UUID.randomUUID().toString()).setPurchaseTime(new Date()).
                 setSeatNum(ticketService.getTicketNum(afid)+1).setSeatType(type).setUid(user.getUid()).
                 setAfid(afid);
@@ -107,6 +127,22 @@ public class TicketInfo {
      */
     @RequestMapping("purchaseResult")
     public String purchaseResult(){
+        return "result";
+    }
+
+    @RequestMapping("myticket")
+    public String myticket(HttpSession httpSession,Model model){
+        User user = (User)httpSession.getAttribute("user");
+        List<Ticket> li=ticketService.getTicketsByUser(user);
+        model.addAttribute("mytickets",li);
+        return "myticket";
+    }
+
+    @GetMapping("remove/{tid}")
+    public String removeTicket(@PathVariable String tid, Model model){
+        System.out.println(tid);
+        ticketService.removeTicketByTid(tid);
+        model.addAttribute("message","退票成功");
         return "result";
     }
 }

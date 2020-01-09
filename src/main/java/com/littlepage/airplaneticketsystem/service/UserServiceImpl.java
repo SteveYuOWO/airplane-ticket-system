@@ -61,4 +61,13 @@ public class UserServiceImpl implements UserService {
         userRepository.updateUser(user);
         return true;
     }
+
+    /**
+     * update money
+     * @param user
+     */
+    @Override
+    public void updateMoney(User user) {
+        userRepository.updateMoney(user);
+    }
 }

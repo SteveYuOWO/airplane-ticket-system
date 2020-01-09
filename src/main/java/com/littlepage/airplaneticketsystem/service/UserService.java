@@ -30,9 +30,15 @@ public interface UserService {
     void addUser(String uid,String username, String password);
 
     /**
-     * 更新user
+     * update user
      * @param user
      * @return
      */
     boolean updateUser(User user);
+
+    /**
+     * update money
+     * @param user
+     */
+    void updateMoney(User user);
 }

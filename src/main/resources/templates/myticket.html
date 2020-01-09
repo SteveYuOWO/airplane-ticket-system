@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments :: head(~{::title})"><title>首页</title></head>
+<body>
+<!--navigation-->
+<nav th:replace="_fragments :: menu" class="ui inverted segment m-padded-tiny right"></nav>
+
+<!-- 中间部分 -->
+<div  class="m-container m-padded-tb-big animated fadeIn">
+    <div class="ui container">
+        <div class="ui stackable grid">
+            <!--左边博客列表-->
+            <div class="eleven wide column">
+                <!--header-->
+                <div class="ui secondary top attached segment">
+                    <div class="ui middle aligned one column grid">
+                        <div class="column">
+                            <h3 class="ui teal header">我的票务</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!--content-->
+                <div class="ui attached segment m-vertical-align-middle">
+                    <div class="ui teal segment attach">
+                        <table class="ui striped very basic table">
+                            <thead>
+                                <tr>
+                                    <th>购买时间</th>
+                                    <th>座位号</th>
+                                    <th>舱位类型</th>
+                                    <th>航班Id</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="ticket : ${mytickets}">
+                                    <td th:text="${ticket.purchaseTime}">购买时间</td>
+                                    <td th:text="${ticket.seatNum}">座位号</td>
+                                    <td th:if="${ticket.seatType}=='h'">头等舱</td>
+                                    <td th:if="${ticket.seatType}=='b'">商务舱</td>
+                                    <td th:if="${ticket.seatType}=='t'">经济舱</td>
+                                    <td th:text="${ticket.afid}">航班Id</td>
+                                    <td><a th:href="'/info/remove/'+${ticket.tID}" class="button ui teal basic" onclick="return confirm('是否退票?')">退票</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--右边的top-->
+            <div th:replace="_fragments :: rightsearch"></div>
+
+        </div>
+    </div>
+
+</div>
+<br>
+<br>
+<footer th:replace="_fragments :: footer"></footer>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script th:block th:replace="_fragments :: tongle-script"></script>
+</body>
+</html>
