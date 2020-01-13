@@ -145,8 +145,8 @@ public class Fake {
         while (rs.next()){
             int starthour = r.nextInt(24);
             af.setAfId(AirflightUUID.getAirflightUUID()).
-                    setStartTime(DateUtils.getDate("2020-1-9 "+starthour+":"+r.nextInt(60)+"")).
-                    setArriveTime(DateUtils.getDate("2020-1-9 "+(starthour+2)+":"+r.nextInt(60)+"")).
+                    setStartTime(DateUtils.getDate("2020-1-10 "+starthour+":"+r.nextInt(60)+"")).
+                    setArriveTime(DateUtils.getDate("2020-1-10 "+(starthour+2)+":"+r.nextInt(60)+"")).
                     setTouristPrice((r.nextInt(100)+300)*1.0).
                     setFirstPrice((r.nextInt(100)+700)*1.0).
                     setBusinessPrice((r.nextInt(100)+500)*1.0).

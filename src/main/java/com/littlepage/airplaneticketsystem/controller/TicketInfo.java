@@ -1,11 +1,10 @@
 package com.littlepage.airplaneticketsystem.controller;
 
+import com.littlepage.airplaneticketsystem.dao.AirflightRepository;
+import com.littlepage.airplaneticketsystem.dao.PlaneRepository;
 import com.littlepage.airplaneticketsystem.pojo.Ticket;
 import com.littlepage.airplaneticketsystem.pojo.User;
-import com.littlepage.airplaneticketsystem.service.TicketDetailsService;
-import com.littlepage.airplaneticketsystem.service.TicketNumberService;
-import com.littlepage.airplaneticketsystem.service.TicketService;
-import com.littlepage.airplaneticketsystem.service.VipService;
+import com.littlepage.airplaneticketsystem.service.*;
 import com.littlepage.airplaneticketsystem.vojo.TicketDetails;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +24,11 @@ import java.util.UUID;
 @Controller
 @RequestMapping("info")
 public class TicketInfo {
+    /**
+     * user service
+     */
+    @Autowired
+    private UserService userService;
 
     /**
      * ticket detail service
@@ -89,7 +93,8 @@ public class TicketInfo {
     public String buy(@PathVariable String type,
                       @PathVariable String afid,
                       HttpSession httpSession,
-                      Model model, RedirectAttributes attributes){
+                      Model model, RedirectAttributes attributes,
+                      HttpSession session){
         User user = (User)httpSession.getAttribute("user");
         Ticket ticket = new Ticket();
         TicketDetails ticketDetails = ticketDetailsService.getTicketDetails(afid);
@@ -118,6 +123,9 @@ public class TicketInfo {
                 setAfid(afid);
         ticketService.buyTicket(ticket);
         attributes.addFlashAttribute("message","购买成功");
+
+        User updateUser = userService.findUser(user.getUsername());
+        session.setAttribute("user",updateUser);
         return "redirect:/info/purchaseResult";
     }
 
@@ -130,6 +138,12 @@ public class TicketInfo {
         return "result";
     }
 
+    /**
+     * my ticket
+     * @param httpSession
+     * @param model
+     * @return
+     */
     @RequestMapping("myticket")
     public String myticket(HttpSession httpSession,Model model){
         User user = (User)httpSession.getAttribute("user");
@@ -138,9 +152,15 @@ public class TicketInfo {
         return "myticket";
     }
 
+    /**
+     * remove by tid
+     * @param tid
+     * @param model
+     * @return
+     */
     @GetMapping("remove/{tid}")
-    public String removeTicket(@PathVariable String tid, Model model){
-        System.out.println(tid);
+    public String removeTicket(@PathVariable String tid, Model model,HttpSession session){
+        User user = (User)session.getAttribute("user");
         ticketService.removeTicketByTid(tid);
         model.addAttribute("message","退票成功");
         return "result";

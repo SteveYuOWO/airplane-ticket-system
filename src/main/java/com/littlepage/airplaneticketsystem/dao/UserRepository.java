@@ -42,7 +42,7 @@ public class UserRepository {
     }
 
     /**
-     * find user by username and password
+     * find user by username
      * @param username
      * @return
      */

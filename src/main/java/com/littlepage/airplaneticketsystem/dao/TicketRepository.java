@@ -138,4 +138,5 @@ public class TicketRepository {
         String sql = "delete from t_ticket where t_ticket.tid='" + tid + "'";
         DBUtils.execute(stmt,sql);
     }
+
 }

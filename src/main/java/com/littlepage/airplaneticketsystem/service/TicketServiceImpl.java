@@ -71,4 +71,15 @@ public class TicketServiceImpl implements TicketService {
         ticketRepository.removeTicket(tid);
         return true;
     }
+
+    /**
+     * get ticket by tid
+     * @param tid
+     * @return
+     */
+    @Override
+    public Ticket getTicketByTid(String tid) {
+        return ticketRepository.getTicketByTid(tid);
+    }
+
 }

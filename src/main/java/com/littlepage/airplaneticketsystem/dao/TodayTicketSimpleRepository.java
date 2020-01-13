@@ -106,7 +106,4 @@ public class TodayTicketSimpleRepository {
         }
         return arr;
     }
-
-    //
-    //select * from today_ticket_simple where start_place='西藏' and arrive_place='山西省' and DATEDIFF(dd, start_time, GETDATE())=0
 }

@@ -15,6 +15,9 @@ CREATE TABLE t_user(
 	[mobile_num] VARCHAR(15),
 	[password] CHAR(32) NOT NULL,
 );
+
+CREATE INDEX user_index ON t_user(username)
+
 DROP TABLE IF EXISTS t_company;
 CREATE TABLE t_company(
 	ccid CHAR(36) NOT NULL PRIMARY KEY,
@@ -34,6 +37,8 @@ CREATE TABLE t_plane(
 	cid CHAR(36) FOREIGN KEY REFERENCES t_company(ccid)
 )
 
+CREATE INDEX plane_index ON t_plane(seat_num,tourist_num,business_num)
+
 DROP TABLE IF EXISTS t_airline;
 CREATE TABLE t_airline(
 	alid CHAR(36) NOT NULL PRIMARY KEY,
@@ -41,6 +46,8 @@ CREATE TABLE t_airline(
 	arrivePlace VARCHAR(50),
 	ppid CHAR(36) FOREIGN KEY REFERENCES t_plane(ppid)
 )
+
+create index airline_index on t_airline(start_place,arrive_place)
 
 DROP TABLE IF EXISTS t_airflight;
 CREATE TABLE t_airflight(
@@ -54,6 +61,8 @@ CREATE TABLE t_airflight(
 )
 
 ALTER TABLE t_airflight ADD CONSTRAINT ck_airflight check (afid like 'G[0-9][0-9][0-9][0-9]')
+
+create index airflight_index on t_airflight(start_time,arrive_time)
 
 DROP TABLE IF EXISTS t_ticket;
 CREATE TABLE t_ticket(
@@ -101,6 +110,26 @@ AS
         insert t_ticket values (@tid,@purchase_time,@seat_num,@seat_type,@uid,@afid)
     end
 
+--  price add
+create procedure price_add
+    @percent decimal(5,2),
+    @afid varchar(50),
+    @type char(1)
+AS
+    begin
+        if(@type='h')
+            begin
+                update t_airflight set first_price=first_price*@percent where afid=@afid
+            end
+        if(@type='b')
+            begin
+                update t_airflight set business_price=business_price*@percent where afid=@afid
+            end
+        if(@type='t')
+            begin
+                update t_airflight set tourist_price=tourist_price*@percent where afid=@afid
+            end
+    end
 -- Test procedure
     declare @date datetime=''
     exec purchase 'sadasd',
@@ -114,3 +143,4 @@ create trigger vipTrigger on t_user
     declare @uid char(36),@money decimal(8,2),@init_money decimal(8,2)
     select @uid=uid,@money=consume_money from inserted
     update t_user set level=(@money)/1000 where uid=@uid
+

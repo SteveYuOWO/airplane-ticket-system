@@ -41,4 +41,12 @@ public interface TicketService {
      * @param tid
      */
     boolean removeTicketByTid(String tid);
+
+    /**
+     * get ticket by tid
+     * @param tid
+     * @return
+     */
+    Ticket getTicketByTid(String tid);
+
 }

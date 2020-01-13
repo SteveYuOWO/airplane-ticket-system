@@ -15,7 +15,7 @@
               <div class="ui top attached segment">
                 <div class="ui middle aligned two column grid">
                   <div class="column">
-                    <h3 class="ui teal header"  th:if="${#strings.isEmpty(title)}">推荐航班</h3>
+                    <h3 class="ui teal header"  th:if="${#strings.isEmpty(title)}">今日航班</h3>
                     <h3 class="ui teal header"  th:unless="${#strings.isEmpty(title)}" th:text="${title}">查询结果</h3>
                   </div>
                   <div class="right aligned column m-grey">
